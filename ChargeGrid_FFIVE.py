@@ -94,7 +94,7 @@ class ChargeGrid(ctk.CTk):
     # forma a janela principal do app, define o tamanho, carrega dados e decide se abre na tela de login ou direto no menu principal
     def __init__(self):
         super().__init__()
-        self.title("Mockup App EvCharger")
+        self.title("ChargeGrid APP")
         self.geometry("400x750")
         self.resizable(False, False)
 
@@ -126,7 +126,7 @@ class ChargeGrid(ctk.CTk):
     # tela de login com campos para e-mail, senha e botões de navegação e autenticação
     def show_login_screen(self):
         self.clear_screen()
-        title = ctk.CTkLabel(self.container, text="EvCharger App", font=("Arial", 28, "bold"))
+        title = ctk.CTkLabel(self.container, text="ChargeGrid App", font=("Arial", 28, "bold"))
         title.pack(pady=(50, 40))
 
 
@@ -809,12 +809,12 @@ class ChargeGrid(ctk.CTk):
     # tela de históricos e seleção de gráficos
     def show_history_screen(self):
         self.clear_screen()
-        lbl_title = ctk.CTkLabel(self.container, text="Menu de Histórico", font=("Arial", 20, "bold"))
+        lbl_title = ctk.CTkLabel(self.container, text="Histórico", font=("Arial", 20, "bold"))
         lbl_title.pack(pady=(20, 20))
 
         ctk.CTkLabel(self.container, text="Geral", font=("Arial", 16, "bold"), text_color="#1f6aa5").pack(anchor="w", pady=(10, 5))
 
-        btn_geral_lista = ctk.CTkButton(self.container, text="Histórico Geral (Lista)", command=lambda: self.show_history_list(None))
+        btn_geral_lista = ctk.CTkButton(self.container, text="Histórico Geral", command=lambda: self.show_history_list(None))
         btn_geral_lista.pack(fill="x", pady=5)
         btn_geral_graf = ctk.CTkButton(self.container, text="Gráficos Gerais", command=lambda: self.show_history_graphs(None))
         btn_geral_graf.pack(fill="x", pady=5)
@@ -832,7 +832,7 @@ class ChargeGrid(ctk.CTk):
         btn_esp_graf = ctk.CTkButton(self.container, text="Ver Gráficos do Carregador", fg_color="transparent", border_width=1, command=lambda: self.show_history_graphs(self.selected_charger.get()))
         btn_esp_graf.pack(fill="x", pady=5)
 
-        btn_back = ctk.CTkButton(self.container, text="Voltar à Tela Principal", command=self.show_main_screen, fg_color="transparent", text_color="gray")
+        btn_back = ctk.CTkButton(self.container, text="Voltar", command=self.show_main_screen)
         btn_back.pack(fill="x", side="bottom", pady=20)
 
     # filtra registros de recarga do usuário e exibeem formato de lista como pilha
@@ -871,7 +871,7 @@ class ChargeGrid(ctk.CTk):
 
                 ctk.CTkLabel(frame, text=info, justify="left").pack(padx=10, pady=10, anchor="w")
 
-        btn_back = ctk.CTkButton(self.container, text="Voltar ao Menu", command=self.show_history_screen)
+        btn_back = ctk.CTkButton(self.container, text="Voltar", command=self.show_history_screen)
         btn_back.pack(fill="x", pady=10)
 
     # tela de seleção dos gráficos
@@ -896,7 +896,7 @@ class ChargeGrid(ctk.CTk):
         self.graph_container.pack(expand=True, fill="both", pady=15)
         self.graph_container.pack_propagate(False)
 
-        btn_back = ctk.CTkButton(self.container, text="Voltar ao Menu", command=self.show_history_screen)
+        btn_back = ctk.CTkButton(self.container, text="Voltar", command=self.show_history_screen)
         btn_back.pack(fill="x", pady=10)
 
         self.render_bar_chart(charger_filter)
